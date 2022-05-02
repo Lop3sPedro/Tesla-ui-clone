@@ -7,7 +7,7 @@ interface Props {
   description: string
 }
 
-const DefaultOverlayContent: React.FC<Props> = ( {
+export const DefaultOverlayContent: React.FC<Props> = ( {
   label, description
 })  => {
   return (
@@ -25,4 +25,3 @@ const DefaultOverlayContent: React.FC<Props> = ( {
   );
 };
 
-export default DefaultOverlayContent;

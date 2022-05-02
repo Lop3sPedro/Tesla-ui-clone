@@ -2,14 +2,17 @@ import  React  from 'react';
 
 import { Container } from './styles';
 
-const Page: React.FC = () => {
+export const Page: React.FC = () => {
   return(
     <Container>
       <ModelsWraper>
-      
+        <div>
+          <ModelsSection>
+            
+          </ModelsSection>
+        </div>
       </ModelsWraper>
     </Container>
   )
 }
 
-export default Page;
