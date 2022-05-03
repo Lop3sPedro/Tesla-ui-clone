@@ -1,18 +1,41 @@
-import  React  from 'react';
+import React from "react";
 
-import { Container } from './styles';
+import { ModelsWrapper, ModelSection } from "../Model";
+import { DefaultOverlayContent } from "../DefaultOverlayContent";
+import { UniqueOverlay } from "../UniqueOverlay";
+
+import { Container, Spacer } from "./styles";
 
 export const Page: React.FC = () => {
-  return(
+  return (
     <Container>
-      <ModelsWraper>
+      <ModelsWrapper>
         <div>
-          <ModelsSection>
-            
-          </ModelsSection>
+          {[
+            "Model One",
+            "Model Two",
+            "Model Three",
+            "Model Four",
+            "Model Five",
+            "Model Six",
+            "Model Seven",
+          ].map((modelName) => (
+            <ModelSection
+              key={modelName}
+              className="colored"
+              modelName={modelName}
+              overlayNode={
+                <DefaultOverlayContent
+                  label={modelName}
+                  description="Order Online for Delivery"
+                />
+              }
+            />
+          ))}
         </div>
-      </ModelsWraper>
+        <Spacer />
+        <UniqueOverlay />
+      </ModelsWrapper>
     </Container>
-  )
-}
-
+  );
+};

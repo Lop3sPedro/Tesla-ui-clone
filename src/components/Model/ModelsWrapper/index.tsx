@@ -1,9 +1,55 @@
-import React from 'react';
+import React, { ReactNode, useCallback, useRef, useState } from 'react';
 
-// import { Container } from './styles';
+import ModelsContext, { CarModel } from '../ModelsContext';
+import { ModelOverlay } from '../ModelOverlay'
 
-const ModelsWrapper: React.FC = () => {
-  return <div />;
+import { Container, OverlaysRoot } from './styles';
+
+type Props = {
+  children: ReactNode;
 }
 
-export default ModelsWrapper;
+export const ModelsWrapper: React.FC<Props> = ({children}) => {
+  const wrapperRef = useRef<HTMLDivElement>(null)
+
+  const [registeredModels, setRegisteredModels] =useState<CarModel[]>([])
+
+  const registerModel = useCallback((model: CarModel) => {
+    setRegisteredModels(state => [...state, model])
+  }, [])
+  
+
+  const unregistedModel = useCallback((modelName: string) => {
+    setRegisteredModels(state => state.filter(model => model.modelName !== modelName))
+  }, [])
+
+  const getModelByName = useCallback(
+    (modelName: string) => {
+    return registeredModels.find(item => item.modelName === modelName) || null
+  }, 
+  [registeredModels])
+
+  return (
+    <ModelsContext.Provider 
+      value={{
+        wrapperRef,
+        registeredModels,
+        registerModel,
+        unregistedModel,
+        getModelByName
+      }}
+    >
+      <Container ref={wrapperRef}>
+        <OverlaysRoot>
+          {registeredModels.map(item => (
+            <ModelOverlay key={item.modelName} model={item}>
+              {item.overlayNode}
+            </ModelOverlay>
+          ))}
+        </OverlaysRoot>
+
+        {children}
+      </Container>
+    </ModelsContext.Provider>
+  ) ;
+}

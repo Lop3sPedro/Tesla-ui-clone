@@ -1,1 +1,2 @@
-export { default as ModelsWrapper } from './ModelsWrapper'
+export { ModelsWrapper } from './ModelsWrapper'
+export { ModelSection } from './ModelSection'
