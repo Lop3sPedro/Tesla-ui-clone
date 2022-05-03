@@ -20,7 +20,7 @@ export const Heading = styled.div`
 
     > h2 {
         font-weight: normal;
-        font-size: 14px;
+        font-size: 16px;
         line-height: 20px;
         color: #5c5e62;
     }
