@@ -1,7 +1,7 @@
 import React from "react";
 import { useTransform } from "framer-motion";
 
-import { useWrapperScroll } from "../Model/useWrpperScroll";
+import { useWrapperScroll } from "../Model/useWrapperScroll";
 
 import { Container, Header, Logo, Burger, Footer } from "./styles";
 

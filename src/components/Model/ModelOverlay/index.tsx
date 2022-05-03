@@ -2,7 +2,7 @@ import { useTransform } from 'framer-motion';
 import React, { ReactNode, useCallback, useLayoutEffect, useState } from 'react';
 
 import { CarModel } from '../ModelsContext';
-import { useWrapperScroll } from '../useWrpperScroll';
+import { useWrapperScroll } from '../useWrapperScroll';
 
 import { Container } from './styles'
 
